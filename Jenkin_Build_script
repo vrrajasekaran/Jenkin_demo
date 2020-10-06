@@ -1,5 +1,5 @@
 // Goal: This demo pipeline  code
-// Authore - Arun
+// Authore - Rajasekaran
 pipeline{
 agent{
  node {
@@ -13,7 +13,7 @@ tools {
 stages {
      stage('Checkout the code'){
      steps{
-        git branch: 'master', url: 'https://github.com/Aruns-tech/war-web-project.git'
+        git branch: 'master', url: 'https://github.com/vrrajasekaran/Jenkin_demo.git'
      }
     }
     
