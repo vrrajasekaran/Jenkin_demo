@@ -1,0 +1,57 @@
+// Goal: This demo pipeline  code
+// Authore - Arun
+pipeline{
+agent{
+ node {
+     label 'master'
+ }
+}
+tools {
+    maven 'maven3.6'
+    jdk 'java'
+}
+stages {
+     stage('Checkout the code'){
+     steps{
+        git branch: 'master', url: 'https://github.com/Aruns-tech/war-web-project.git'
+     }
+    }
+    
+    stage('THis is stage 1'){
+     steps{
+         echo "step 1"
+        }
+        }
+        
+        stage('Maven Clean'){
+        steps{
+            bat """
+           mvn clean
+            """
+           }
+    }
+        stage('Code compile'){
+
+        steps{
+            bat """
+           mvn compile
+            """
+        }
+    }
+        stage('Run Test'){
+            steps{
+                bat """
+                mvn test
+                """
+                }
+        }
+        
+        stage('Package')    {
+        steps{
+            bat """
+            mvn package
+            """
+        }
+    }
+    }
+}
